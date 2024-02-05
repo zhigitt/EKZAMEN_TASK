@@ -23,6 +23,7 @@ public class App {
         CustomerService customerService = new CustomerImpl();
         OwnerService ownerService = new OwnerImpl();
         HouseService houseService = new HouseImpl();
+        RentInfo rentInfo = new RentInfo();
 
         //AGENCY
 //        System.out.println(agencyService.save(new Agency("Agent007", "+996702636545"), new Address("Bishkek", "Chui", "Tokotogula")));
@@ -100,6 +101,12 @@ public class App {
 
 //        System.out.println(houseService.getHousesByAgency(1L));
 //        System.out.println(houseService.getHousesByOwner(1L));
+
+
+
+        //RENT INFO
+        rentInfo.
+
 
 
     }
