@@ -4,7 +4,9 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import java12.config.Config;
 import java12.dao.CustomerDao;
+import java12.entity.Agency;
 import java12.entity.Customer;
+import java12.entity.House;
 import java12.entity.RentInfo;
 
 import java.util.ArrayList;
@@ -127,12 +129,99 @@ public class CustomerDaoImpl implements CustomerDao {
     }
 
     @Override
-    public void saveCustomerWithHouse(Customer customer, RentInfo rentInfo) {
+    public void saveCustomerWithHouse(Customer customer, House house, RentInfo rentInfo) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        List<RentInfo> rentInfos = new ArrayList<>();
+        rentInfos.add(rentInfo);
+
+        try {
+            entityManager.getTransaction().begin();
+
+            customer.setRentInfos(rentInfos);
+            rentInfo.setCustomer(customer);
+            house.setRentInfo(rentInfo);
+            rentInfo.setHouse(house);
+
+            entityManager.persist(customer);
+            entityManager.persist(house);
+            entityManager.persist(rentInfo);
+
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            if (entityManager.getTransaction().isActive()) entityManager.getTransaction().rollback();
+            System.out.println(e.getMessage());
+        } finally {
+            entityManager.close();
+        }
+
+        System.out.println("saved customer");
+    }
+
+    @Override
+    public void assignCustomerRent(Long cusId, Long housId, Long agencyId, RentInfo rentInfo) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        try {
+            entityManager.getTransaction().begin();
+
+            Customer customer = entityManager.find(Customer.class, cusId);
+            if (customer == null) {
+                System.out.println("Customer not found.");
+                return;
+            }
+
+            House house = entityManager.find(House.class, housId);
+            if (house == null) {
+                System.out.println("House not found.");
+                return;
+            }
+
+            Agency agency = entityManager.find(Agency.class, agencyId);
+            if (agency == null) {
+                System.out.println("Agency not found.");
+                return;
+            }
+
+            customer.getRentInfos().add(rentInfo);
+            house.setRentInfo(rentInfo);
+            agency.getRentInfos().add(rentInfo);
+            rentInfo.setHouse(house);
+            rentInfo.setAgency(agency);
+
+            entityManager.persist(rentInfo);
+
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            if (entityManager.getTransaction().isActive()) entityManager.getTransaction().rollback();
+            System.out.println(e.getMessage());
+        } finally {
+            entityManager.close();
+        }
+
 
     }
 
     @Override
     public void rentHouse(Long cusId, RentInfo rentInfo) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
 
+        List<RentInfo> rentInfos = new ArrayList<>();
+        rentInfos.add(rentInfo);
+
+        try {
+            entityManager.getTransaction().begin();
+
+
+
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            if (entityManager.getTransaction().isActive()) entityManager.getTransaction().rollback();
+            System.out.println(e.getMessage());
+        } finally {
+            entityManager.close();
+        }
+
+        System.out.println("saved customer");
     }
 }

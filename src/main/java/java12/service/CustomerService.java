@@ -1,6 +1,7 @@
 package java12.service;
 
 import java12.entity.Customer;
+import java12.entity.House;
 import java12.entity.RentInfo;
 
 import java.util.List;
@@ -13,8 +14,8 @@ public interface CustomerService {
     void update(Long id, Customer customer);
 
 
-    void saveCustomerWithHouse(Customer customer, RentInfo rentInfo);
-
+    void saveCustomerWithHouse(Customer customer, House house, RentInfo rentInfo);
+    void assignCustomerRent(Long cusId, Long housId, Long agencyId, RentInfo rentInfo);
     void rentHouse(Long cusId, RentInfo rentInfo);
 
 }

@@ -1,9 +1,6 @@
 package java12.dao;
 
-import java12.entity.Address;
-import java12.entity.Agency;
-import java12.entity.Customer;
-import java12.entity.RentInfo;
+import java12.entity.*;
 
 import java.util.List;
 
@@ -15,7 +12,9 @@ public interface CustomerDao {
     void update(Long id, Customer customer);
 
 
-    void saveCustomerWithHouse(Customer customer, RentInfo rentInfo);
+    void saveCustomerWithHouse(Customer customer, House house, RentInfo rentInfo);
+
+    void assignCustomerRent(Long cusId, Long housId, Long agencyId, RentInfo rentInfo);
 
     void rentHouse(Long cusId, RentInfo rentInfo);
 

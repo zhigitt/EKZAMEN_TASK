@@ -17,16 +17,20 @@ import java.util.List;
 public class RentInfo extends BaseEntity{
     @Column(name = "check_in")
     private LocalDate checkin;
+    @ManyToOne
+    private Customer customer;
 
     @Column(name = "check_out")
     private LocalDate checkOut;
 
-
-    @ManyToOne
-    private Customer customer;
+    public RentInfo(LocalDate checkin, LocalDate checkOut) {
+        this.checkin = checkin;
+        this.checkOut = checkOut;
+    }
 
     @ManyToOne
     private Owner owner;
+
 
     @OneToOne
     private  House house;

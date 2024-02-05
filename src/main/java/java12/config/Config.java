@@ -16,7 +16,7 @@ public class Config {
         properties.put(Environment.JAKARTA_JDBC_PASSWORD, "zhigit");
         properties.put(Environment.JAKARTA_JDBC_DRIVER, "org.postgresql.Driver");
         properties.put(Environment.JAKARTA_JDBC_URL, "jdbc:postgresql://localhost:5432/ekzamen");
-        properties.put(Environment.HBM2DDL_AUTO, "create");
+        properties.put(Environment.HBM2DDL_AUTO, "update");
         properties.put(Environment.DIALECT, "org.hibernate.dialect.PostgreSQLDialect");
 //        properties.put(Environment.SHOW_SQL, "true");
 //        properties.put(Environment.FORMAT_SQL, "true");

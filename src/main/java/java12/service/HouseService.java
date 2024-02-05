@@ -14,5 +14,6 @@ public interface HouseService {
     List<House> getHousesByRegion(String region);
     List<House> getHousesByAgency(Long agencyId);
     List<House> getHousesByOwner(Long ownerId);
+    String saveHouse(House house);
 
 }

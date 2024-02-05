@@ -43,7 +43,7 @@ public class Owner extends  BaseEntity {
     @ManyToMany(mappedBy = "owners")
     private List<Agency> agencies;
 
-    @OneToMany(mappedBy = "owner")
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.PERSIST)
     private List<RentInfo> rentInfos;
 
 
@@ -53,5 +53,16 @@ public class Owner extends  BaseEntity {
         this.email = email;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
+    }
+
+    @Override
+    public String toString() {
+        return "Owner{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", gender=" + gender +
+                '}';
     }
 }

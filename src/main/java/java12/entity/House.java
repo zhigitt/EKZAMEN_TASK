@@ -24,11 +24,33 @@ public class House extends BaseEntity {
     private Owner owner;
 
     @OneToOne
-    private  House house;
+    private  RentInfo rentInfo;
 
+    @OneToOne(cascade = CascadeType.REMOVE)
+    private  Address address;
 
     private BigDecimal price;
     private double rating;
     private int room;
     private boolean furniture;
+
+
+    public House(HouseType houseType,  BigDecimal price, double rating, int room, boolean furniture) {
+        this.houseType = houseType;
+        this.price = price;
+        this.rating = rating;
+        this.room = room;
+        this.furniture = furniture;
+    }
+
+    @Override
+    public String toString() {
+        return "House{" +
+                "houseType=" + houseType +
+                ", price=" + price +
+                ", rating=" + rating +
+                ", room=" + room +
+                ", furniture=" + furniture +
+                '}';
+    }
 }

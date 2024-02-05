@@ -19,7 +19,7 @@ public class OwnerImpl implements OwnerService {
     }
 
     @Override
-    public Agency getById(Long id) {
+    public Owner getById(Long id) {
         return ownerDao.getById(id);
     }
 
@@ -47,16 +47,17 @@ public class OwnerImpl implements OwnerService {
 
     @Override
     public String assignOwnerToAgency(Long ownerId, Long agencyId) {
-        return null;
+
+        return ownerDao.assignOwnerToAgency(ownerId, agencyId);
     }
 
     @Override
     public void getOwnerByAgencyId(Long agencyId) {
-
+        ownerDao.getOwnerByAgencyId(agencyId);
     }
 
     @Override
     public void getOwnersNameAge() {
-
+        ownerDao.getOwnersNameAge();
     }
 }

@@ -37,16 +37,21 @@ public class HouseImpl implements HouseService {
 
     @Override
     public List<House> getHousesByRegion(String region) {
-        return null;
+        return houseDao.getHousesByRegion(region);
     }
 
     @Override
     public List<House> getHousesByAgency(Long agencyId) {
-        return null;
+        return houseDao.getHousesByAgency(agencyId);
     }
 
     @Override
     public List<House> getHousesByOwner(Long ownerId) {
-        return null;
+        return houseDao.getHousesByOwner(ownerId);
+    }
+
+    @Override
+    public String saveHouse(House house) {
+        return houseDao.saveHouse(house);
     }
 }

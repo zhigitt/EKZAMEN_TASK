@@ -24,13 +24,10 @@ public class Agency extends BaseEntity{
     @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Address address;
 
-    @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
-    private RentInfo rentInfo;
-
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Owner> owners;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<RentInfo> rentInfos;
 
 
@@ -47,4 +44,5 @@ public class Agency extends BaseEntity{
                 ", address=" + address +
                 '}';
     }
+
 }

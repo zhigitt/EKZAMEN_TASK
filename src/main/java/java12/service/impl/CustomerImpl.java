@@ -3,6 +3,7 @@ package java12.service.impl;
 import java12.dao.CustomerDao;
 import java12.dao.impl.CustomerDaoImpl;
 import java12.entity.Customer;
+import java12.entity.House;
 import java12.entity.RentInfo;
 import java12.service.CustomerService;
 
@@ -37,8 +38,13 @@ public class CustomerImpl implements CustomerService {
     }
 
     @Override
-    public void saveCustomerWithHouse(Customer customer, RentInfo rentInfo) {
-        customerDao.saveCustomerWithHouse(customer, rentInfo);
+    public void saveCustomerWithHouse(Customer customer, House house, RentInfo rentInfo) {
+        customerDao.saveCustomerWithHouse(customer, house , rentInfo);
+    }
+
+    @Override
+    public void assignCustomerRent(Long cusId, Long housId, Long agencyId, RentInfo rentInfo) {
+        customerDao.assignCustomerRent(cusId,housId,agencyId, rentInfo);
     }
 
     @Override

@@ -9,6 +9,7 @@ import java.util.Map;
 
 public interface HouseDao {
     String save(House house, Long ownerId);
+    String saveHouse(House house);
     House getById(Long id);
     void deleteById(Long id);
     List<House> getAll();

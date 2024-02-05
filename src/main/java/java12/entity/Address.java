@@ -24,6 +24,7 @@ public class Address  extends BaseEntity{
     @OneToOne(mappedBy = "address")
     private Agency agency;
 
+
     @Override
     public String toString() {
         return "Address{" +
